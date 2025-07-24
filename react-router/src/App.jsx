@@ -1,9 +1,11 @@
 import { useState } from 'react'
 import { BrowserRouter as Router, Routes, Route, BrowserRouter } from 'react-router-dom'
+
 import './App.css'
 import Home from './pages/Home'
 import AboutUs from './pages/AboutUs'
 import Products from './pages/Products'
+import DefaultLayout from './layout/DefaultLayout'
 
 function App() {
 
@@ -11,9 +13,11 @@ function App() {
     <BrowserRouter>
       
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/products' element={<Products />} />
-        <Route path='/about_us' element={<AboutUs />} />
+        <Route element={<DefaultLayout />}>
+          <Route index Component={Home} />
+          <Route path='/products' Component={Products} />
+          <Route path='/about_us' Component={AboutUs} />
+        </Route>
       </Routes>
     
     </BrowserRouter>
@@ -25,9 +29,6 @@ export default App
 
 // Consegna
 // https://fakestoreapi.com/
-
-// Obiettivi
-// Installiamo React Router DOM: npm i react-router-dom
 
 // Creiamo almeno 3 pagine principali:
 // Homepage (con un messaggio di benvenuto o immagine promozionale)
