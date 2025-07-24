@@ -1,11 +1,22 @@
 import { useState } from 'react'
+import { BrowserRouter as Router, Routes, Route, BrowserRouter } from 'react-router-dom'
 import './App.css'
+import Home from './pages/Home'
+import AboutUs from './pages/AboutUs'
+import Products from './pages/Products'
 
 function App() {
 
   return (
-    <>
-    </>
+    <BrowserRouter>
+      
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/products' element={<Products />} />
+        <Route path='/about_us' element={<AboutUs />} />
+      </Routes>
+    
+    </BrowserRouter>
   )
 }
 
