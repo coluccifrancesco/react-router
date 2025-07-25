@@ -20,10 +20,10 @@ export default function Products(){
                     {articles.map((item) => (
 
                         <li key={item.id} className="col col-sm-12 col-md-6 col-lg-4 col-xl-3">            
-                            <div className="card border m-3 rounded-5 z-0 ">
+                            <div className="card border m-3 rounded-bottom-4 z-0 ">
                                 <img src={item.image} className="card-img-top p-5" alt={item.title} />
                                     
-                                <div className="card-body border border-4 border-primary rounded-5">
+                                <div className="card-body border border-4 border-primary rounded-4">
                                     <h5 className="card-title">{item.title}</h5>
                                     <p className="card-text mb-1 text-success">{item.price} €</p>
                                     <p className="card-text" style={{fontSize: "14px"}}>{item.category}</p>
