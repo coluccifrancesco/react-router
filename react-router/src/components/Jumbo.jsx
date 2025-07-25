@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom'
 
 export default function Jumbo() {
     return (
-        <main className='mt-5'>
+        <div className='mt-5'>
             <div className="row align-items-md-stretch">
                 <div className="col">
                     <div className="h-100 p-5 text-black bg-transparent">
@@ -73,6 +73,6 @@ export default function Jumbo() {
                     <span className="visually-hidden">Next</span>
                 </button>
             </div>
-        </main>
+        </div>
     )
 }
