@@ -3,6 +3,9 @@ import { useState, useEffect } from 'react'
 export default function Products(){
 
     const [articles, setArticles] = useState([]);
+    
+    // Con questa costante faccio variare il valore dell'url in base all'articolo selezionato
+    const [url, setUrl] = useState(null);
 
     function fetchArticles(){
         fetch('https://fakestoreapi.com/products')
