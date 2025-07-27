@@ -4,6 +4,7 @@ import './App.css'
 import Home from './pages/Home'
 import AboutUs from './pages/AboutUs'
 import Products from './pages/Products'
+import ProductsDetail from './pages/ProductsDetail'
 import DefaultLayout from './layout/DefaultLayout'
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Route element={<DefaultLayout />}>
           <Route index Component={Home} />
           <Route path='/products' Component={Products} />
+          <Route path='/products/:id' Component={ProductsDetail} />
           <Route path='/about_us' Component={AboutUs} />
         </Route>
       </Routes>

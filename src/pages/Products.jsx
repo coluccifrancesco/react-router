@@ -1,11 +1,18 @@
 import { useState, useEffect } from 'react'
 
+// DISCLAIMER useNavigate:
+// Ho ricercato soluzioni per navigare la pagina nel modo più pulito, mi sono imbattuto in useNavigate,
+// se funzionerà in modo veloce, intuitivo, e senza aggiungere layer di difficoltà, lo terrò
+// e leggerete questo disclaimer sul perchè l'ho preferito rispetto a <Link>
+import { useNavigate } from 'react-router-dom'
+
 export default function Products(){
 
     const [articles, setArticles] = useState([]);
-    
-    // Con questa costante faccio variare il valore dell'url in base all'articolo selezionato
-    const [url, setUrl] = useState(null);
+
+    // Rinomino il metodo useNaigate dichiarandolo nella mia funzione
+    const navigate = useNavigate();
+
 
     function fetchArticles(){
         fetch('https://fakestoreapi.com/products')
@@ -27,7 +34,18 @@ export default function Products(){
                                 <img src={item.image} className="card-img-top p-5" alt={item.title} />
                                     
                                 <div className="card-body border border-4 border-primary rounded-4">
-                                    <h5 className="card-title">{item.title}</h5>
+                                    
+                                    {/* 
+                                        Nell'azione onClick richiamo la costante navigate per aggiornare l'url con quello
+                                        individuato tramite il metodo map 
+                                    */}
+                                    <h5 onClick={()=>{
+                                        const id = item.id
+                                        console.log(id);
+                                        navigate('/products/:' + {id})
+                                    }} 
+                                    className="card-title card-title-enhancer">{item.title}</h5>
+                                    
                                     <p className="card-text mb-1 text-success">{item.price} €</p>
                                     <p className="card-text" style={{fontSize: "14px"}}>{item.category}</p>
                                         
