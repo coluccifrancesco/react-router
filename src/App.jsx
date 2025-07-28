@@ -18,6 +18,7 @@ function App() {
           <Route path='/products' Component={Products} />
           <Route path='/products/:id' Component={ProductsDetail} />
           <Route path='/about_us' Component={AboutUs} />
+          <Route path='/*' element={<h1>Not Found</h1>} />
         </Route>
       </Routes>
     
