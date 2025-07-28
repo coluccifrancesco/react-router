@@ -10,7 +10,7 @@ export default function Products(){
         fetch('https://fakestoreapi.com/products')
         .then(res => res.json())
         .then(data => {
-            console.log(data.length);
+            console.log('Total articles: ' + data.length);
             setArticles(data)
         })
     };
