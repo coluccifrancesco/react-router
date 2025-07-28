@@ -31,13 +31,13 @@ export default function ProductsDetail(){
         
         <div className='mt-5 container'>
             { articleInfo ? (
-                <section className="row g-5">
+                <section className="row g-5 mt-1">
 
-                    <div className='col col-12 col-md-6 d-flex justify-content-center align-items-center'>
+                    <div className='col col-12 col-md-6 d-flex justify-content-center align-items-center my-5'>
                         <img src={articleInfo.image} className='w-50 mx-auto' />
                     </div>
 
-                    <div className="col col-12 col-md-6">
+                    <div className="col col-12 col-md-6 m-auto">
                         
                         <h3>{articleInfo.title}</h3>
 
