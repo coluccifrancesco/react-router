@@ -1,23 +1,18 @@
 import { useState, useEffect } from 'react'
-
-// DISCLAIMER useNavigate:
-// Ho ricercato soluzioni per navigare la pagina nel modo più pulito, mi sono imbattuto in useNavigate,
-// se funzionerà in modo veloce, intuitivo, e senza aggiungere layer di difficoltà, lo terrò
-// e leggerete questo disclaimer sul perchè l'ho preferito rispetto a <Link>
-import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export default function Products(){
 
     const [articles, setArticles] = useState([]);
-
-    // Rinomino il metodo useNaigate dichiarandolo nella mia funzione
-    const navigate = useNavigate();
-
-
+    
     function fetchArticles(){
+        console.log('🏗️ Products component rendering...');
         fetch('https://fakestoreapi.com/products')
         .then(res => res.json())
-        .then(setArticles)
+        .then(data => {
+            console.log(data.length);
+            setArticles(data)
+        })
     };
 
     useEffect(fetchArticles, []);
@@ -29,22 +24,14 @@ export default function Products(){
                     
                     {articles.map((item) => (
 
-                        <li key={item.id} className="col col-sm-12 col-md-6 col-lg-4 col-xl-3">            
-                            <div className="card border m-3 rounded-bottom-4 z-0 ">
+                        <li key={item.id} className="col col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">            
+                            <div className="card m-3 rounded-4">
                                 <img src={item.image} className="card-img-top p-5" alt={item.title} />
                                     
-                                <div className="card-body border border-4 border-primary rounded-4">
-                                    
-                                    {/* 
-                                        Nell'azione onClick richiamo la costante navigate per aggiornare l'url con quello
-                                        individuato tramite il metodo map 
-                                    */}
-                                    <h5 onClick={()=>{
-                                        const id = item.id
-                                        console.log(id);
-                                        navigate('/products/:' + {id})
-                                    }} 
-                                    className="card-title card-title-enhancer">{item.title}</h5>
+                                <div className="card-body">
+                                    <Link to={`/products/${item.id}`} className='links'>
+                                        <h2 className="card-title card-title-enhancer">{item.title}</h2>
+                                    </Link>
                                     
                                     <p className="card-text mb-1 text-success">{item.price} €</p>
                                     <p className="card-text" style={{fontSize: "14px"}}>{item.category}</p>
